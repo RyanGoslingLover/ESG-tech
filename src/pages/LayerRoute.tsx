@@ -1,10 +1,12 @@
-import { Shell } from "@/components/layout/Shell";
+import { PortalLayout } from "@/components/layout/PortalLayout";
 import { PipelinePage } from "@/pages/PipelinePage";
 
 const LayerRoute = () => (
-  <Shell>
-    <PipelinePage />
-  </Shell>
+  <PortalLayout>
+    <div className="mx-auto max-w-7xl">
+      <PipelinePage />
+    </div>
+  </PortalLayout>
 );
 
 export default LayerRoute;
