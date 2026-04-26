@@ -2,60 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
-/* SERI Platform — Smart ESG Readiness Infrastructure
-   Dark green design system. All colors in HSL. */
+/* Monet ESG — Thai Textile SME Edition
+   Light, academic-grade fintech aesthetic.
+   Primary: deep emerald (#0F766E) · Accent: warm gold (#D4A24C)
+   All colors in HSL. */
 
 @layer base {
   :root {
-    --background: 156 33% 6%;
-    --foreground: 125 39% 93%;
+    --background: 0 0% 100%;
+    --foreground: 222 14% 14%;
 
-    --card: 153 30% 10%;
-    --card-foreground: 125 39% 93%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 14% 14%;
 
-    --popover: 150 30% 13%;
-    --popover-foreground: 125 39% 93%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 14% 14%;
 
-    --primary: 157 100% 50%;
-    --primary-foreground: 156 33% 6%;
+    /* Deep emerald #0F766E */
+    --primary: 174 77% 26%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 150 30% 13%;
-    --secondary-foreground: 125 39% 93%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 14% 14%;
 
-    --muted: 150 31% 16%;
-    --muted-foreground: 156 17% 63%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
 
-    --accent: 150 32% 25%;
-    --accent-foreground: 125 39% 93%;
+    /* Warm gold #D4A24C */
+    --accent: 38 60% 56%;
+    --accent-foreground: 222 14% 14%;
 
-    --destructive: 0 100% 68%;
-    --destructive-foreground: 156 33% 6%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 150 32% 17%;
-    --input: 150 32% 17%;
-    --ring: 157 100% 50%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 174 77% 26%;
 
-    --radius: 0.75rem;
+    --radius: 0.875rem;
 
     /* Brand semantic tokens */
-    --brand-bg: 156 33% 6%;
-    --brand-surface: 153 30% 10%;
-    --brand-surface2: 150 30% 13%;
-    --brand-surface3: 150 31% 16%;
-    --brand-border: 150 32% 17%;
-    --brand-border-strong: 150 32% 25%;
-    --brand-green: 157 100% 50%;
-    --brand-green2: 157 100% 39%;
-    --brand-amber: 35 100% 64%;
-    --brand-red: 0 100% 68%;
-    --brand-blue: 187 65% 59%;
-    --brand-text: 125 39% 93%;
-    --brand-text2: 156 17% 63%;
-    --brand-text3: 145 14% 42%;
+    --brand-emerald: 174 77% 26%;
+    --brand-emerald-deep: 175 84% 18%;
+    --brand-emerald-soft: 168 76% 42%;
+    --brand-emerald-bg: 167 76% 96%;
 
-    --gradient-green: linear-gradient(135deg, hsl(var(--brand-green)), hsl(var(--brand-green2)));
-    --shadow-glow: 0 0 40px hsl(var(--brand-green) / 0.15);
-    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.4);
+    --brand-gold: 38 60% 56%;
+    --brand-gold-soft: 42 78% 92%;
+    --brand-gold-deep: 33 60% 42%;
+
+    --brand-ink: 222 14% 14%;
+    --brand-ink2: 220 9% 28%;
+    --brand-ink3: 220 9% 46%;
+    --brand-mute: 220 9% 70%;
+
+    --brand-surface: 0 0% 100%;
+    --brand-surface2: 220 20% 98%;
+    --brand-surface3: 220 14% 96%;
+
+    --brand-success: 152 60% 36%;
+    --brand-warn: 38 92% 50%;
+    --brand-danger: 0 72% 51%;
+
+    --shadow-card: 0 1px 2px hsl(220 14% 14% / 0.04), 0 4px 16px hsl(220 14% 14% / 0.05);
+    --shadow-soft: 0 1px 2px hsl(220 14% 14% / 0.04);
+    --shadow-elevated: 0 8px 32px hsl(220 14% 14% / 0.08);
+  }
+
+  .dark {
+    --background: 222 14% 8%;
+    --foreground: 0 0% 98%;
+    --card: 222 14% 11%;
+    --card-foreground: 0 0% 98%;
+    --primary: 168 76% 42%;
+    --primary-foreground: 222 14% 8%;
+    --border: 222 10% 20%;
   }
 }
 
@@ -64,44 +85,28 @@
     @apply border-border;
   }
   html, body, #root {
-    @apply h-full;
+    @apply min-h-full;
   }
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: "IBM Plex Sans Thai", "Inter", ui-sans-serif, system-ui, sans-serif;
     font-feature-settings: "cv11", "ss01";
+  }
+  :lang(en), .font-latin {
+    font-family: "Inter", "IBM Plex Sans Thai", ui-sans-serif, system-ui, sans-serif;
+  }
+  h1, h2, h3, h4 {
+    @apply tracking-tight;
   }
 }
 
 @layer utilities {
   .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
   .scrollbar-thin::-webkit-scrollbar-thumb {
-    background: hsl(var(--brand-border-strong));
+    background: hsl(var(--brand-mute));
     border-radius: 3px;
   }
-  .shimmer {
-    background: linear-gradient(90deg,
-      hsl(var(--brand-surface2)) 0%,
-      hsl(var(--brand-surface3)) 50%,
-      hsl(var(--brand-surface2)) 100%);
-    background-size: 200% 100%;
-    animation: shimmer 1.2s infinite;
-  }
-  @keyframes shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-  }
-  .pulse-dot {
-    animation: pulse-dot 1.6s ease-in-out infinite;
-  }
-  @keyframes pulse-dot {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.85); }
-  }
-  .flow-dash {
-    stroke-dasharray: 6 6;
-    animation: dash 1s linear infinite;
-  }
-  @keyframes dash {
-    to { stroke-dashoffset: -24; }
+  .ring-focus {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2;
   }
 }
