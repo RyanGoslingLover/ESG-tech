@@ -130,7 +130,7 @@ const dict = {
 
 export function t(lang: Lang, key: string): string {
   const [group, id] = key.split(".");
-  // @ts-expect-error dynamic
-  const entry = dict[group]?.[id];
+  const groupDict = (dict as Record<string, Record<string, { en: string; th: string }>>)[group];
+  const entry = groupDict?.[id];
   return entry ? entry[lang] : key;
 }
