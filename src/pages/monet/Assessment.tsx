@@ -18,11 +18,12 @@ export default function Assessment() {
   const { answers, setAnswer } = useMonet();
   const [qIdx, setQIdx] = useState(0);
   const [showHelper, setShowHelper] = useState(false);
+  const safeDim = (dimension && dimOrder.includes(dimension as Dimension) ? dimension : "energy") as Dimension;
+  const questions = useMemo(() => questionsByDimension(safeDim), [safeDim]);
 
-  if (!dimension || !dimOrder.includes(dimension)) return <Navigate to="/assessment/start" replace />;
+  if (!dimension || !dimOrder.includes(dimension as Dimension)) return <Navigate to="/assessment/start" replace />;
 
-  const dim = dimensions.find((d) => d.key === dimension)!;
-  const questions = useMemo(() => questionsByDimension(dimension), [dimension]);
+  const dim = dimensions.find((d) => d.key === safeDim)!;
   const q = questions[qIdx];
   const dimIdx = dimOrder.indexOf(dimension);
   const overallProgress = ((dimIdx + (qIdx + 1) / questions.length) / dimOrder.length) * 100;
